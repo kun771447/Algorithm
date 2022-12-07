@@ -1,0 +1,26 @@
+<script>
+  var containsNearbyAlmostDuplicate = function (nums, k, t) {
+    let set = new Set();
+    for (let i = 0; i < nums.length; i++) {
+      let flag = false;
+      set.forEach((n) => {
+        if (Math.abs(nums[i] - n) <= t) {
+          flag = true;
+          return;
+        }
+      });
+
+      if (flag) {
+        return true;
+      }
+
+      set.add(nums[i]);
+
+      if (set.size > k) {
+        set.delete(nums[i - k]);
+      }
+    }
+    return false;
+  };
+  console.log(containsNearbyAlmostDuplicate([1, 2, 3, 1], 3, 0));
+</script>

@@ -1,0 +1,35 @@
+<script>
+  var wordPattern = function (pattern, s) {
+    // 字符串转换成数组
+    let patternArr = pattern.split("");
+    let sArr = s.split(" ");
+
+    // 数组去重
+    let pSet = [...new Set(patternArr)];
+    let sSet = [...new Set(sArr)];
+
+    console.log(pSet, sSet, patternArr, sArr);
+
+    // 种类是否相同
+    if (pSet.length !== sSet.length) {
+      return false;
+    }
+
+    let obj = {};
+
+    for (let i = 0; i < pSet.length; i++) {
+      obj[sSet[i]] = pSet[i];
+    }
+
+    for (let i = 0; i < sArr.length; i++) {
+      let item = sArr[i];
+      if (obj[item]) {
+        sArr[i] = obj[item];
+      } else {
+        return false;
+      }
+    }
+    console.log(sArr.join("") == pattern);
+  };
+  wordPattern("", "");
+</script>

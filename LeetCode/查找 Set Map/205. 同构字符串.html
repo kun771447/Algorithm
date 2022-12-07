@@ -1,0 +1,38 @@
+<script>
+  var isIsomorphic = function (s, t) {
+    if (s.length !== t.length) {
+      return false;
+    }
+    // 字符串转换成数组
+    let sArr = s.split("");
+    let tArr = t.split("");
+
+    // 数组去重
+    let sSet = [...new Set(sArr)];
+    let tSet = [...new Set(tArr)];
+
+    console.log(sSet, tSet, sArr, tArr);
+
+    // 种类是否相同
+    if (sSet.length !== tSet.length) {
+      return false;
+    }
+
+    let obj = {};
+
+    for (let i = 0; i < sSet.length; i++) {
+      obj[tSet[i]] = sSet[i];
+    }
+
+    for (let i = 0; i < tArr.length; i++) {
+      let item = tArr[i];
+      if (obj[item]) {
+        tArr[i] = obj[item];
+      } else {
+        return false;
+      }
+    }
+    return tArr.join("") === s;
+  };
+  console.log(isIsomorphic("egg", "add"));
+</script>

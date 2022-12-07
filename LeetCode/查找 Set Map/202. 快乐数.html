@@ -1,0 +1,30 @@
+<script>
+  var isHappy = function (n) {
+    if (n == 1) {
+      return true;
+    }
+    const powAdd = (n) => {
+      let sum = 0;
+      while (n) {
+        sum += Math.pow(n % 10, 2);
+        n = Math.floor(n / 10);
+      }
+      return sum;
+    };
+    let res = powAdd(n);
+    let obj = {};
+
+    while (res !== 1) {
+      if (!obj[res]) {
+        obj[res] = 1;
+      } else {
+        return false;
+      }
+      res = powAdd(res);
+    }
+
+    return true;
+  };
+
+  isHappy(19);
+</script>

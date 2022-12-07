@@ -1,0 +1,15 @@
+var moveZeroes = function(nums) {
+            let k = 0; // nums 中, [0, k] 的元素为非 0 元素
+            // 遍历到第 i 个元素后，[0, i] 中所有非 0 元素
+            // 都按照顺序排列在 [0, k] 中
+            for(let i = 0; i < nums.length; i++) {
+                if(nums[i]) {
+                    if (i != k) {
+                        let swap = nums[i];
+                        nums[i] = nums[k];
+                        nums[k] = swap;
+                    }
+                    k++;
+                }
+            }
+        };

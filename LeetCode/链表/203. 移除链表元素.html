@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <script src="./ListNode.js"></script>
+    <script>
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val) {
+       *     this.val = val;
+       *     this.next = null;
+       * }
+       */
+      /**
+       * @param {ListNode} head
+       * @param {number} val
+       * @return {ListNode}
+       */
+    let node = ListNodeEach([1, 2, 3, 4, 6]);
+
+    // 1. 不创建虚拟头节点
+      var removeElements = function (head, val) {
+        while (head.val !== null && head.val === val) {
+          head = head.next;
+        }
+        if (head === null) {
+          return null;
+        }
+
+        let prev = head;
+        while (prev.next != null) {
+          if (prev.next.val === val) {
+            prev.next = prev.next.next;
+          } else {
+            prev = prev.next;
+          }
+        }
+
+        return head;
+      };
+
+    // 2. 创建虚拟头节点
+    var removeElements = function (head, val) {
+        let dummyHead = new ListNode();
+        dummyHead.next = head;
+        prev = dummyHead;
+        while (prev.next != null) {
+          if (prev.next.val === val) {
+            prev.next = prev.next.next;
+          } else {
+            prev = prev.next;
+          }
+        }
+
+        return  dummyHead.next;
+      };
+
+    // 3. 递归求解
+    var removeElements = function (head, val) {
+        if (head == null) {
+           return null;
+       }
+
+       let res = removeElements(head.next, val);
+       if (head.val == val) {
+            return res;
+       } else {
+           head.next = res;
+           return head;
+       }
+    };
+
+    </script>
+  </body>
+</html>

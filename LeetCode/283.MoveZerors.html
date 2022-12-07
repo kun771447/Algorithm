@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var moveZeroes = function(nums) {
+            var newNum = [];
+            for (let i = 0; i < nums.length; i++) {
+                if (nums[i] != 0) {
+                    newNum.push(nums[i]);
+                }
+            }
+            for(let i = 0; i < newNum.length; i++) {
+                nums[i] = newNum[i];
+            }
+            for(let i = newNum.length; i < nums.length; i++) {
+                nums[i] = 0;
+            }
+        };
+    </script>
+    <script>
+        var moveZeroes = function(nums) {
+            let k = 0; // nums 中, [0, k] 的元素为非 0 元素
+            // 遍历到第 i 个元素后，[0, i] 中所有非 0 元素
+            // 都按照顺序排列在 [0, k] 中
+            for(let i = 0; i < nums.length; i++) {
+                if (num[i]) {
+                    nums[k++] = nums[i];
+                }
+            }
+            for(let i = k; i < nums.length; i++) {
+                nums[i] = 0;
+            }
+        };
+    </script>
+    <script>
+        var moveZeroes = function(nums) {
+            let k = 0; // nums 中, [0, k] 的元素为非 0 元素
+            // 遍历到第 i 个元素后，[0, i] 中所有非 0 元素
+            // 都按照顺序排列在 [0, k] 中
+            for(let i = 0; i < nums.length; i++) {
+                if(num[i]) {
+                    if (i != k) {
+                        let swap = num[i];
+                        num[i] = num[k];
+                        num[k++] = swap;
+                    } else {
+                        k++;
+                    }
+                }
+            }
+        };
+    </script>
+
+    <script>
+        function swap(arr, i, j) {
+            let middle = arr[j];
+            arr[j] = arr[i];
+            arr[i] = middle;
+        }
+
+         var moveZeroes = function(nums) {
+            let k = 0;
+            for(let i = 0; i < nums.length; i++) {
+                if (nums[i]) {
+                    if (k != i){
+                        swap(nums, k, i);
+                    }
+                    k++;
+                }
+            }
+           
+        };
+
+        let arr = [0, 2, 0, 0, 4, 6];
+        moveZeroes(arr);
+    </script>
+</body>
+</html>

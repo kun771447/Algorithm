@@ -1,0 +1,9 @@
+<script>
+  var intersection = function (nums1, nums2) {
+    let s1 = new Set(nums1);
+    let s2 = new Set(nums2.filter((n) => s1.has(n)));
+    console.log([...s2]);
+  };
+
+  intersection([1, 2, 2, 1], [2, 2]);
+</script>

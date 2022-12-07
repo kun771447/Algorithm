@@ -1,0 +1,62 @@
+<script>
+  function find6174Path(num) {
+    // write code here
+    function numYu(num) {
+      let nums = [];
+      let min = 9999;
+      let max = 1000;
+      while (num) {
+        nums.push(num % 10);
+        num = Math.floor(num / 10);
+      }
+      console.log(nums);
+      for (let i = 0; i < nums.length; i++) {
+        let sum = nums[i] * 1000;
+        for (let j = 0; j < nums.length; j++) {
+          if (i === j) {
+            continue;
+          }
+          let sum2 = sum + nums[j] * 100;
+          for (let k = 0; k < nums.length; k++) {
+            if (k === i || k === j) {
+              continue;
+            }
+            let sum3 = sum2 + nums[k] * 10;
+            for (let m = 0; m < nums.length; m++) {
+              if (m === i || m === j || m === k) {
+                continue;
+              }
+              let sum4 = sum3 + nums[m];
+              if (min > sum4) {
+                min = sum4;
+              }
+              if (max < sum4) {
+                max = sum4;
+              }
+            }
+          }
+        }
+      }
+      let res = max - min;
+      if (res < 1000) {
+        res *= 10;
+      }
+      return res;
+    }
+    let nums = [];
+    nums.push(num);
+    let res = numYu(num);
+    console.log(res);
+    // while (true) {
+    //   nums.push(res);
+
+    //   if (res === 6174) {
+    //     break;
+    //   }
+    //   res = numYu(res);
+    // }
+
+    return nums.join("->");
+  }
+  find6174Path("2021");
+</script>

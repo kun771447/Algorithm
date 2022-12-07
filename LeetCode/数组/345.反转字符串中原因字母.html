@@ -1,0 +1,46 @@
+<script>
+  var reverseVowels = function (s) {
+    // a e i o u
+    let str = [];
+    console.log(s.length);
+    for (let i = 0; i < s.length; i++) {
+      //   console.log(s);
+      str.push(s[i]);
+    }
+    let l = 0;
+    let r = s.length - 1;
+
+    const isVowel = (ch) => {
+      let obj = {
+        a: "a",
+        e: "e",
+        i: "i",
+        o: "o",
+        u: "u",
+      };
+      if (obj[ch]) {
+        return true;
+      }
+      return false;
+    };
+    while (l < r) {
+      if (isVowel(str[l]) && isVowel(str[r])) {
+        let temp = str[l];
+        str[l] = str[r];
+        str[r] = temp;
+        l++;
+        r--;
+      } else if (isVowel(str[l])) {
+        r--;
+      } else if (isVowel(str[r])) {
+        l++;
+      } else {
+        l++;
+        r--;
+      }
+    }
+    console.log(str.join(""));
+    return str;
+  };
+  reverseVowels("hello");
+</script>

@@ -1,0 +1,35 @@
+<script>
+  var intersect = function (nums1, nums2) {
+    let obj = {};
+    let obj2 = {};
+
+    nums1.forEach((n) => {
+      if (obj[n]) {
+        obj[n] += 1;
+      } else {
+        obj[n] = 1;
+      }
+    });
+    nums2.forEach((n) => {
+      if (obj2[n]) {
+        obj2[n] += 1;
+      } else {
+        obj2[n] = 1;
+      }
+    });
+
+    let res = [];
+
+    for (key in obj) {
+      if (obj2[key]) {
+        let count = obj[key] < obj2[key] ? obj[key] : obj2[key];
+        for (let i = 0; i < count; i++) {
+          res.push(key);
+        }
+        console.log(res);
+        obj2[key] = undefined;
+      }
+    }
+  };
+  intersect([1, 2, 2, 1], [2, 2, 2]);
+</script>

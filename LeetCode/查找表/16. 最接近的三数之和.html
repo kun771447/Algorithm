@@ -1,0 +1,55 @@
+<ul>
+  <li>1</li>
+  <li>1</li>
+  <li>1</li>
+  <li>1</li>
+</ul>
+<script>
+  //   var threeSumClosest = function (nums, target) {
+  //     let minus;
+  //     for (let i = 0; i < nums.length - 2; i++) {
+  //       for (let j = i + 1; j < nums.length - 1; j++) {
+  //         for (let k = j + 1; k < nums.length; k++) {
+  //           let curVal = nums[i] + nums[j] + nums[k];
+  //           if (
+  //             minus === undefined ||
+  //             Math.abs(minus - target) > Math.abs(curVal - target)
+  //           ) {
+  //             minus = curVal;
+  //           }
+  //         }
+  //       }
+  //     }
+  //     return minus;
+  //   };
+  //   threeSumClosest([-1, 0, 1, 2, -1, -4], 0);
+</script>
+
+<script>
+  var threeSumClosest = function (nums, target) {
+    nums.sort((a, b) => a - b);
+    let minus;
+    let len = nums.length;
+    for (let i = 0; i < len; i++) {
+      if (i > 0 && nums[i] === nums[i - 1]) continue;
+      let L = i + 1;
+      let R = len - 1;
+      while (L < R) {
+        let sum = nums[i] + nums[L] + nums[R];
+        if (sum == target) {
+          return 0;
+        } else if (sum < target) {
+          L++;
+        } else {
+          R--;
+        }
+        if (!minus || Math.abs(minus - target) > Math.abs(sum - target)) {
+          minus = sum;
+        }
+      }
+    }
+    console.log(minus);
+    return minus;
+  };
+  threeSumClosest([-1, 2, 1, -4], 1);
+</script>

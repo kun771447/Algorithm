@@ -1,0 +1,26 @@
+<script>
+  var fourSumCount = function (A, B, C, D) {
+    let obj = {};
+    for (let i = 0; i < A.length; i++) {
+      for (let j = 0; j < B.length; j++) {
+        if (obj[A[i] + B[j]]) {
+          obj[A[i] + B[j]]++;
+        } else {
+          obj[A[i] + B[j]] = 1;
+        }
+      }
+    }
+    let res = 0;
+    for (let i = 0; i < C.length; i++) {
+      for (let j = 0; j < D.length; j++) {
+        let temp = obj[-C[i] - D[j]];
+        if (temp) {
+          res += temp;
+        }
+      }
+    }
+    console.log(res);
+    return res;
+  };
+  fourSumCount([-1, -1], [-1, 1], [-1, 1], [1, -1]);
+</script>

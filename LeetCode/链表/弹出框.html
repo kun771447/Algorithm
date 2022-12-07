@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #registerModal {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="registerBtn">123456</button>
+    <div id="registerModal" class="registerModalClose">
+        sdfajklsdfanjkldfsnjkldfsnjkld
+    </div>
+    <script>
+        var registerBtn = document.querySelector('.registerBtn');
+        var registerModal = document.querySelector('#registerModal');
+        var registerModalClose = document.querySelector('.registerModalClose');
+
+        console.log(registerBtn);
+        registerBtn.onclick = function() {
+            registerModal.style.display = 'block';
+        }
+        registerModalClose.onclick = function() {
+            registerModal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<script>
+  /**
+   * @param {number[]} nums
+   * @return {number[][]}
+   */
+
+  var threeSum = function (nums) {
+    if (nums.length < 3) {
+      return [];
+    }
+
+    nums.sort((a, b) => a - b);
+
+    let obj = {};
+
+    for (let i = 0; i < nums.length; i++) {
+      obj[nums[i]] = i;
+    }
+
+    let target = 0;
+    let res = [];
+
+    for (let i = 0; i < nums.length - 1; i++) {
+      if (nums[i] > 0) break;
+      if (i > 0 && nums[i - 1] === nums[i]) continue;
+      target -= nums[i];
+      for (let j = i + 1; j < nums.length - 1; j++) {
+        if (j > i + 1 && nums[j - 1] === nums[j]) continue;
+        if (obj[target - nums[j]] && obj[target - nums[j]] > j) {
+          res.push([nums[i], nums[j], nums[obj[target - nums[j]]]]);
+        }
+      }
+      target = 0;
+    }
+    return res;
+  };
+  threeSum([-1, 0, 1, 2, -1, -4]);
+</script>
