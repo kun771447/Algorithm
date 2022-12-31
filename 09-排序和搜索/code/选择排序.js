@@ -4,9 +4,9 @@
 
 const swap = require("./swap");
 function selectSort(nums) {
-  for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i < nums.length  - 1; i++) {
     let minIndex = i;
-    for (let j = i + 1; j < nums.length - 1; j++) {
+    for (let j = i + 1; j < nums.length; j++) {
       if (nums[minIndex] > nums[j]) {
         minIndex = j;
       }
